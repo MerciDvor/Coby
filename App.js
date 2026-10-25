@@ -5,6 +5,7 @@ import { PlayerProvider } from './src/player/PlayerContext';
 import { LibraryProvider } from './src/store/LibraryContext';
 import SearchScreen from './src/screens/SearchScreen';
 import LibraryScreen from './src/screens/LibraryScreen';
+import YouTubeScreen from './src/screens/YouTubeScreen';
 import MiniPlayer from './src/components/MiniPlayer';
 import NowPlaying from './src/components/NowPlaying';
 import { colors } from './src/theme';
@@ -21,6 +22,9 @@ function Shell() {
       <View style={[styles.content, tab !== 'search' && styles.hidden]}>
         <SearchScreen />
       </View>
+      <View style={[styles.content, tab !== 'youtube' && styles.hidden]}>
+        <YouTubeScreen />
+      </View>
       <View style={[styles.content, tab !== 'library' && styles.hidden]}>
         <LibraryScreen />
       </View>
@@ -29,7 +33,8 @@ function Shell() {
 
       <View style={[styles.tabs, { paddingBottom: insets.bottom + 8 }]}>
         <TabButton label="Buscar" active={tab === 'search'} onPress={() => setTab('search')} />
-        <TabButton label="Tu biblioteca" active={tab === 'library'} onPress={() => setTab('library')} />
+        <TabButton label="YouTube" active={tab === 'youtube'} onPress={() => setTab('youtube')} />
+        <TabButton label="Biblioteca" active={tab === 'library'} onPress={() => setTab('library')} />
       </View>
 
       <NowPlaying visible={playerOpen} onClose={() => setPlayerOpen(false)} />
